@@ -20,9 +20,19 @@ This is the backend of the BookMyShow clone application, built with **Node.js** 
    ```bash
    git clone https://github.com/ritez-0x53/capstone_bookmyshow-backend.git
 2. Navigate to the project directory:
+   ```bash
+   cd capstone_bookmyshow-backend
 3. Install dependencies:
+   ```bash
+   npm install
 4. Create a .env file in the root directory to set up environment variables:
+   ```bash
+   PORT=<desired-port>
+   MONGODB_URI=<mongodb-atlas-connection-string>
 5. Start the server:
+   ```bash
+   node app.js
+
 
 Usage
 The backend server will start at http://localhost:<PORT> (default port is specified in .env).
