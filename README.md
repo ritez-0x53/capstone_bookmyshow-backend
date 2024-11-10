@@ -44,7 +44,7 @@ Connect the repository to Render.
 Configure environment variables in Render to match those in your .env file.
 Render will automatically deploy the latest changes.
 
-# Booking System API Documentation
+# API Documentation
 
 This API provides functionalities to manage bookings for movie shows.
 
