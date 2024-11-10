@@ -27,7 +27,7 @@ This is the backend of the BookMyShow clone application, built with **Node.js** 
 4. Create a .env file in the root directory to set up environment variables:
    ```bash
    PORT=8080
-   MONGODB_URI=<mongodb-atlas-connection-string>
+   MONGODB_CONN_STRING=<mongodb-atlas-connection-string>
 5. Start the server:
    ```bash
    node app.js
