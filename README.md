@@ -10,9 +10,8 @@ This is the backend of the BookMyShow clone application, built with **Node.js** 
 - **Render** - Deployment platform for backend services
 
 ## Features
-- API for fetching event details
-- User authentication and ticket booking functionality
-- RESTful endpoints to manage CRUD operations for events and bookings
+- API for fetching booked shows and for booking shows as well
+- RESTful endpoints to manage CRUD operations for bookings
 - Error handling and data validation for secure and efficient processing
 
 ## Setup and Installation
