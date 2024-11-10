@@ -27,7 +27,7 @@ This is the backend of the BookMyShow clone application, built with **Node.js** 
    npm install
 4. Create a .env file in the root directory to set up environment variables:
    ```bash
-   PORT=<desired-port>
+   PORT=8080
    MONGODB_URI=<mongodb-atlas-connection-string>
 5. Start the server:
    ```bash
@@ -35,7 +35,7 @@ This is the backend of the BookMyShow clone application, built with **Node.js** 
 
 
 Usage
-The backend server will start at http://localhost:<PORT> (default port is specified in .env).
+The backend server will start at http://localhost:8080 (default port is specified in .env).
 Test endpoints using tools like Postman or integrate it with the frontend.
 Deployment
 The backend is deployed on Render. To deploy:
