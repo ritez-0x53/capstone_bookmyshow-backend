@@ -2,8 +2,7 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 
 // MongoDB connection string (you can uncomment the dotenv line for dynamic loading)
-const conn_string =
-  "mongodb+srv://ritez:3QVCNZeVx7a2hqgW@almabettercapstone.5ncd0k2.mongodb.net/almabetter_capstone?retryWrites=true&w=majority&appName=almabetterCapstone";
+const conn_string = process.env.MONGODB_CONN_STRING
 
 async function mongoConnection() {
   // Connect to MongoDB using mongoose with the connection string
