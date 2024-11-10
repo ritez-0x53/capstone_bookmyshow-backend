@@ -44,90 +44,85 @@ Connect the repository to Render.
 Configure environment variables in Render to match those in your .env file.
 Render will automatically deploy the latest changes.
 
-Booking System API Documentation
+# Booking System API Documentation
 
 This API provides functionalities to manage bookings for movie shows.
 
-Table of Contents
+## Table of Contents
+- [Introduction](#introduction)
+- [Base URL](#base-url)
+- [Authentication](#authentication)
+- [Error Handling](#error-handling)
+- [Endpoints](#endpoints)
+  - [Create Booking](#1-create-booking-post-apibooking)
+  - [Get All Bookings](#2-get-all-bookings-get-apibooking)
+- [Database Schema](#database-schema)
+- [Additional Notes](#additional-notes)
 
-Introduction
-Base URL
-Authentication
-Error Handling
-Endpoints
-1. Create Booking (POST /api/booking)
-2. Get All Bookings (GET /api/booking)
-Database Schema
-Additional Notes
-Introduction
-
+## Introduction
 This API provides functionalities to manage bookings for movie shows. You can create new bookings and retrieve existing ones.
 
-Base URL
+## Base URL
+```
+http://localhost:${PORT}
+```
+Replace `${PORT}` with the actual port number from your `.env` file.
 
-http://localhost:${PORT} (Replace ${PORT} with the actual port number from your .env file)
-
-Authentication
-
+## Authentication
 This API currently does not require any specific authentication mechanisms.
 
-Error Handling
-
+## Error Handling
 The API will respond with error codes in the following format:
 
-400 (Bad Request): Invalid request body format or missing required parameters.
-404 (Not Found): Resource not found (e.g., trying to get a booking that doesn't exist).
-500 (Internal Server Error): Unexpected error occurred on the server side.
-Endpoints
+- **400 (Bad Request):** Invalid request body format or missing required parameters
+- **404 (Not Found):** Resource not found (e.g., trying to get a booking that doesn't exist)
+- **500 (Internal Server Error):** Unexpected error occurred on the server side
 
-1. Create Booking (POST /api/booking)
+## Endpoints
 
-Description: Creates a new booking for a show.
+### 1. Create Booking (POST /api/booking)
 
-Request:
+**Description:** Creates a new booking for a show.
 
-Method: POST
+#### Request:
+- **Method:** POST
+- **Body:** (JSON format)
 
-Body: (JSON format)
-
-JSON
+```json
 {
-  "movieName": "string", (required) - Name of the movie
-  "timeSlot": "string", (required) - Time slot for the show (e.g., "10:00 AM")
-  "A1": "boolean", (optional) - Availability of seat A1
-  "A2": "boolean", (optional) - Availability of seat A2"
-  "A3": "boolean", (optional) - Availability of seat A3
-  "A4": "boolean", (optional) - Availability of seat A4
-  "D1": "boolean", (optional) - Availability of seat D1
-  "D2": "boolean", (optional) - Availability of seat D2
+  "movieName": "string", // (required) - Name of the movie
+  "timeSlot": "string",  // (required) - Time slot for the show (e.g., "10:00 AM")
+  "A1": "boolean",       // (optional) - Availability of seat A1
+  "A2": "boolean",       // (optional) - Availability of seat A2
+  "A3": "boolean",       // (optional) - Availability of seat A3
+  "A4": "boolean",       // (optional) - Availability of seat A4
+  "D1": "boolean",       // (optional) - Availability of seat D1
+  "D2": "boolean"        // (optional) - Availability of seat D2
 }
-Use code with caution.
+```
 
-Response:
+#### Response:
 
-Success: (Status Code: 201)
-
-JSON
+**Success:** (Status Code: 201)
+```json
 {
   "msg": "show booked successfully.",
   "data": {
     // Object containing the newly created booking details (same structure as request body)
   }
 }
-Use code with caution.
+```
 
-Error: (Status Code: 400 or 404)
-
-JSON
+**Error:** (Status Code: 400 or 404)
+```json
 {
   "error": "Error message"
 }
-Use code with caution.
+```
 
-Example Request (Creating a booking):
-
+#### Example Request:
+```http
 POST http://localhost:3000/api/booking
-
 Content-Type: application/json
 
 {
@@ -140,47 +135,47 @@ Content-Type: application/json
   "D1": false,
   "D2": false
 }
-2. Get All Bookings (GET /api/booking)
+```
 
-Description: Fetches all existing bookings (shows) from the database.
+### 2. Get All Bookings (GET /api/booking)
 
-Request:
+**Description:** Fetches all existing bookings (shows) from the database.
 
-Method: GET
+#### Request:
+- **Method:** GET
+- **Body:** No body required
 
-Body: (No body required)
+#### Response:
 
-Response:
-
-Success: (Status Code: 200)
-
-JSON
+**Success:** (Status Code: 200)
+```json
 [
   {
     // Object representing a booking (show) containing details like movieName, timeSlot, seat availabilities, etc.
   },
   {
     // Another booking object (show) details
-  },
+  }
   // ... (more booking objects if available)
 ]
-Use code with caution.
+```
 
-Error: (Status Code: 404)
-
-JSON
+**Error:** (Status Code: 404)
+```json
 {
   "error": "Error message"
 }
-Use code with caution.
+```
 
-Example Request (Fetching all bookings):
-
+#### Example Request:
+```http
 GET http://localhost:3000/api/booking
-Database Schema
+```
 
-The API interacts with a MongoDB collection called shows. Each document in this collection represents a movie show with the following fields:
+## Database Schema
+The API interacts with a MongoDB collection called `shows`. Each document in this collection represents a movie show with the following fields:
 
-movieName: String - Name of the movie
-timeSlot: String - Time slot for the show (e.g., "10:00 AM")
-A1, A2, A3, A4, D1, D2:
+- `movieName`: String - Name of the movie
+- `timeSlot`: String - Time slot for the show (e.g., "10:00 AM")
+- `A1`, `A2`, `A3`, `A4`, `D1`, `D2`: Boolean - Seat availability status
+
