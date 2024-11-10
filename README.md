@@ -1,7 +1,7 @@
 
 # BookMyShow Backend
 
-This is the backend of the BookMyShow clone application, built with **Node.js** and **Express**. The backend provides APIs for user authentication, event details, and ticket bookings. Data is stored in a **MongoDB Atlas** database.
+This is the backend of the BookMyShow clone application, built with **Node.js** and **Express**. The backend provides APIs for booking tickets for listed shows and fetching last booking. Data is stored in a **MongoDB Atlas** database.
 
 ## Tech Stack
 - **Node.js** - JavaScript runtime for the backend
