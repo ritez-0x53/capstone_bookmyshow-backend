@@ -44,117 +44,143 @@ Connect the repository to Render.
 Configure environment variables in Render to match those in your .env file.
 Render will automatically deploy the latest changes.
 
+Booking System API Documentation
 
-API Documentation 
-API Endpoints
-1. Create a Booking
-Endpoint: POST /api/booking
+This API provides functionalities to manage bookings for movie shows.
 
-Description: Creates a new booking for a specified movie, time slot, and seat categories.
+Table of Contents
 
-URL: http://localhost:8080/api/booking
+Introduction
+Base URL
+Authentication
+Error Handling
+Endpoints
+1. Create Booking (POST /api/booking)
+2. Get All Bookings (GET /api/booking)
+Database Schema
+Additional Notes
+Introduction
+
+This API provides functionalities to manage bookings for movie shows. You can create new bookings and retrieve existing ones.
+
+Base URL
+
+http://localhost:${PORT} (Replace ${PORT} with the actual port number from your .env file)
+
+Authentication
+
+This API currently does not require any specific authentication mechanisms.
+
+Error Handling
+
+The API will respond with error codes in the following format:
+
+400 (Bad Request): Invalid request body format or missing required parameters.
+404 (Not Found): Resource not found (e.g., trying to get a booking that doesn't exist).
+500 (Internal Server Error): Unexpected error occurred on the server side.
+Endpoints
+
+1. Create Booking (POST /api/booking)
+
+Description: Creates a new booking for a show.
+
+Request:
 
 Method: POST
 
-Request Body:
+Body: (JSON format)
 
-movieName (String): Name of the movie to book (required).
-timeSlot (String): Time slot for the booking (required).
-A1, A2, A3, A4, D1, D2 (Number): Optional. Number of seats booked in each category.
-Example Request:
-
-json
-Copy code
+JSON
 {
-  "movieName": "Inception",
-  "timeSlot": "7:00 PM",
-  "A1": 3,
-  "A2": 2,
-  "A3": 0,
-  "A4": 1,
-  "D1": 0,
-  "D2": 1
+  "movieName": "string", (required) - Name of the movie
+  "timeSlot": "string", (required) - Time slot for the show (e.g., "10:00 AM")
+  "A1": "boolean", (optional) - Availability of seat A1
+  "A2": "boolean", (optional) - Availability of seat A2"
+  "A3": "boolean", (optional) - Availability of seat A3
+  "A4": "boolean", (optional) - Availability of seat A4
+  "D1": "boolean", (optional) - Availability of seat D1
+  "D2": "boolean", (optional) - Availability of seat D2
 }
+Use code with caution.
+
 Response:
 
-Status Code: 201 Created
-Example Response:
-json
-Copy code
+Success: (Status Code: 201)
+
+JSON
 {
   "msg": "show booked successfully.",
   "data": {
-    "_id": "61e3c2cbe29b7c0015f2d8ec",
-    "movieName": "Inception",
-    "timeSlot": "7:00 PM",
-    "A1": 3,
-    "A2": 2,
-    "A3": 0,
-    "A4": 1,
-    "D1": 0,
-    "D2": 1,
-    "__v": 0
+    // Object containing the newly created booking details (same structure as request body)
   }
 }
-2. Retrieve All Bookings
-Endpoint: GET /api/booking
-Description: Retrieves all bookings from the database.
-URL: http://localhost:8080/api/booking
+Use code with caution.
+
+Error: (Status Code: 400 or 404)
+
+JSON
+{
+  "error": "Error message"
+}
+Use code with caution.
+
+Example Request (Creating a booking):
+
+POST http://localhost:3000/api/booking
+
+Content-Type: application/json
+
+{
+  "movieName": "The Matrix",
+  "timeSlot": "08:00 PM",
+  "A1": true,
+  "A2": true,
+  "A3": false,
+  "A4": true,
+  "D1": false,
+  "D2": false
+}
+2. Get All Bookings (GET /api/booking)
+
+Description: Fetches all existing bookings (shows) from the database.
+
+Request:
+
 Method: GET
+
+Body: (No body required)
+
 Response:
-Status Code: 200 OK
-Example Response:
-json
-Copy code
+
+Success: (Status Code: 200)
+
+JSON
 [
   {
-    "_id": "61e3c2cbe29b7c0015f2d8ec",
-    "movieName": "Inception",
-    "timeSlot": "7:00 PM",
-    "A1": 3,
-    "A2": 2,
-    "A3": 0,
-    "A4": 1,
-    "D1": 0,
-    "D2": 1
+    // Object representing a booking (show) containing details like movieName, timeSlot, seat availabilities, etc.
   },
   {
-    "_id": "61e3c2fbe29b7c0015f2d8ef",
-    "movieName": "Interstellar",
-    "timeSlot": "9:00 PM",
-    "A1": 2,
-    "A2": 4,
-    "A3": 1,
-    "A4": 2,
-    "D1": 0,
-    "D2": 3
-  }
+    // Another booking object (show) details
+  },
+  // ... (more booking objects if available)
 ]
-Error Handling
-The API handles errors gracefully and provides descriptive messages:
+Use code with caution.
 
-404 Not Found: If a request to an invalid endpoint or with incorrect data is made.
-500 Internal Server Error: For unexpected errors on the server side.
-Example error response:
+Error: (Status Code: 404)
 
-json
-Copy code
+JSON
 {
-  "error": "An error occurred while processing your request."
+  "error": "Error message"
 }
-Middleware
-CORS: Cross-Origin Resource Sharing is enabled to allow requests from different origins.
-Body Parsing: JSON and URL-encoded body parsing are enabled.
-This README provides a comprehensive API documentation schema for setting up, using, and understanding the API functionality. Let me know if further modifications are needed!
+Use code with caution.
 
+Example Request (Fetching all bookings):
 
+GET http://localhost:3000/api/booking
+Database Schema
 
+The API interacts with a MongoDB collection called shows. Each document in this collection represents a movie show with the following fields:
 
-
-
-
-
-
-
-
-
+movieName: String - Name of the movie
+timeSlot: String - Time slot for the show (e.g., "10:00 AM")
+A1, A2, A3, A4, D1, D2:
