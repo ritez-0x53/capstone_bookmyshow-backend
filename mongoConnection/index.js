@@ -1,11 +1,17 @@
 const mongoose = require("mongoose");
 require("dotenv").config();
-const conn_string = process.env.MONGODB_CONN_STRING;
+
+// MongoDB connection string (you can uncomment the dotenv line for dynamic loading)
+const conn_string =
+  "mongodb+srv://ritez:3QVCNZeVx7a2hqgW@almabettercapstone.5ncd0k2.mongodb.net/almabetter_capstone?retryWrites=true&w=majority&appName=almabetterCapstone";
+
 async function mongoConnection() {
-  await mongoose.connect(
-    `${conn_string}?retryWrites=true&w=majority&useNewUrlParser=true&useUnifiedTopology=true`
-  );
+  // Connect to MongoDB using mongoose with the connection string
+  await mongoose.connect(conn_string, { useNewUrlParser: true, useUnifiedTopology: true });
+  
+  // Log success message upon successful connection
   console.log("mongodb connected successfully...");
 }
 
+// Export the connection function to use in other parts of the app
 module.exports = { mongoConnection };
