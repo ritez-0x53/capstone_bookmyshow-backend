@@ -126,14 +126,14 @@ POST http://localhost:8080/api/booking
 Content-Type: application/json
 
 {
-  "movieName": "The Matrix",
+  "movieName": "Tenet",
   "timeSlot": "08:00 PM",
-  "A1": true,
-  "A2": true,
-  "A3": false,
-  "A4": true,
-  "D1": false,
-  "D2": false
+  "A1": 1,
+  "A2": 10,
+  "A3": 0,
+  "A4": 0,
+  "D1": 0,
+  "D2": 3
 }
 ```
 
