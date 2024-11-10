@@ -122,7 +122,7 @@ The API will respond with error codes in the following format:
 
 #### Example Request:
 ```http
-POST http://localhost:3000/api/booking
+POST http://localhost:8080/api/booking
 Content-Type: application/json
 
 {
@@ -169,7 +169,7 @@ Content-Type: application/json
 
 #### Example Request:
 ```http
-GET http://localhost:3000/api/booking
+GET http://localhost:8080/api/booking
 ```
 
 ## Database Schema
