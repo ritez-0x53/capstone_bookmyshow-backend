@@ -176,6 +176,6 @@ GET http://localhost:8080/api/booking
 The API interacts with a MongoDB collection called `shows`. Each document in this collection represents a movie show with the following fields:
 
 - `movieName`: String - Name of the movie
-- `timeSlot`: String - Time slot for the show (e.g., "10:00 AM")
-- `A1`, `A2`, `A3`, `A4`, `D1`, `D2`: Number - Seat availability status
+- `timeSlot`: String - Time slot for the show
+- `A1`, `A2`, `A3`, `A4`, `D1`, `D2`: Number - Seat Column
 
