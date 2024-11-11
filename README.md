@@ -92,12 +92,12 @@ The API will respond with error codes in the following format:
 {
   "movieName": "string", // (required) - Name of the movie
   "timeSlot": "string",  // (required) - Time slot for the show (e.g., "10:00 AM")
-  "A1": "boolean",       // (optional) - Availability of seat A1
-  "A2": "boolean",       // (optional) - Availability of seat A2
-  "A3": "boolean",       // (optional) - Availability of seat A3
-  "A4": "boolean",       // (optional) - Availability of seat A4
-  "D1": "boolean",       // (optional) - Availability of seat D1
-  "D2": "boolean"        // (optional) - Availability of seat D2
+  "A1": "Number",       //  - Availability of seat A1 , must input atleast one of the seat from the seat Group
+  "A2": "Number",       //  - Availability of seat A2
+  "A3": "Number",       //  - Availability of seat A3
+  "A4": "Number",       //  - Availability of seat A4
+  "D1": "Number",       //  - Availability of seat D1
+  "D2": "Number"        //  - Availability of seat D2
 }
 ```
 
