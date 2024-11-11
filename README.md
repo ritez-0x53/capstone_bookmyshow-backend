@@ -177,5 +177,5 @@ The API interacts with a MongoDB collection called `shows`. Each document in thi
 
 - `movieName`: String - Name of the movie
 - `timeSlot`: String - Time slot for the show (e.g., "10:00 AM")
-- `A1`, `A2`, `A3`, `A4`, `D1`, `D2`: Boolean - Seat availability status
+- `A1`, `A2`, `A3`, `A4`, `D1`, `D2`: Number - Seat availability status
 
